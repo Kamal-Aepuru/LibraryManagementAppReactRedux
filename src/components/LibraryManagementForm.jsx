@@ -19,10 +19,14 @@ const LibraryManagementForm = () => {
         author: author,
         ISBN: Number(ISBN),
       };
-      dispatch(addBook(newBook));
-      setTitle("");
-      setAuthor("");
-      setISBN("");
+      if (!isNaN(newBook.ISBN) && newBook.ISBN !== "") {
+        dispatch(addBook(newBook));
+        setTitle("");
+        setAuthor("");
+        setISBN("");
+      } else {
+        alert("Invalid ISBN. Please enter a valid number.");
+      }
     }
   };
 
